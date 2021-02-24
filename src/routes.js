@@ -7,6 +7,7 @@ import TestPage from './pages/TestPage';
 import PropsTestPage from './pages/PropsTestPage';
 import UserDetailsPage from './pages/UserDetailsPage';
 import UserDetailsPageHook from './pages/UserDetailsPageHook';
+import TodosPage from './pages/TodosPage';
 import AboutPage from './pages/AboutPage';
 
 export const routes = [
@@ -54,6 +55,11 @@ export const routes = [
     path: '/user-details-hook',
     label: 'User Details Hook',
     component: UserDetailsPageHook,
+  },
+  {
+    path: '/todos',
+    label: 'Todos',
+    component: TodosPage,
   },
   {
     path: '/about',

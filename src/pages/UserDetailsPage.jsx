@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import UserData from '../components/UserData';
+import withUserDetailsStyle from './withUserDetailsStyle';
 
 class UserDetailsPage extends Component {
   state = {
@@ -23,8 +24,10 @@ class UserDetailsPage extends Component {
   };
 
   render() {
+    const { classes } = this.props;
+
     return (
-      <div className="user-details">
+      <div className={classes?.userDetails}>
         <h1>User Details</h1>
 
         <UserData user={this.state} />
@@ -42,4 +45,4 @@ class UserDetailsPage extends Component {
   }
 }
 
-export default UserDetailsPage;
+export default withUserDetailsStyle(UserDetailsPage);

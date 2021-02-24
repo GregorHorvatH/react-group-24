@@ -10,5 +10,6 @@ export default createUseStyles({
     padding: 10,
     minWidth: 200,
     maxWidth: 200,
+    overflow: 'auto',
   },
 });
