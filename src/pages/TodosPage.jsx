@@ -5,11 +5,8 @@ import { createUseStyles } from 'react-jss';
 
 const useStyles = createUseStyles({
   todosWrapper: {
-    // border: '1px solid black',
     display: 'flex',
     flexDirection: 'column',
-    // padding: 10,
-    // minWidth: 300,
     width: 400,
   },
 });
@@ -18,7 +15,7 @@ const TodosPage = () => {
   const classes = useStyles();
   const [todos, setTodos] = useState([]);
 
-  const handleSubmit = (todo) => setTodos((prevState) => [...prevState, todo]);
+  const handleSubmit = (todo) => setTodos((prevState) => [todo, ...prevState]);
 
   const handleToggleTodo = (id) =>
     setTodos((prevState) =>
