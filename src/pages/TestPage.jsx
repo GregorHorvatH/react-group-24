@@ -1,12 +1,16 @@
-import { Fragment } from 'react';
+import { Fragment, useState } from 'react';
 import Header from '../components/Header';
 import Form from '../components/Form';
 import NewComponent from '../components/NewComponent';
 import TestComponent from '../components/TestComponent';
+import Timer from '../components/TimerHook';
 
 const TestPage = () => {
+  const [showTimer, setShowTimer] = useState(false);
   const x = 3;
   const sayHello = () => console.log('Hello');
+
+  const toggleShowTimer = () => setShowTimer((prev) => !prev);
 
   return (
     <Fragment>
@@ -17,6 +21,9 @@ const TestPage = () => {
       </NewComponent>
 
       <Form sayHello={sayHello} someComponent={TestComponent} />
+
+      <button onClick={toggleShowTimer}>timer</button>
+      {showTimer && <Timer />}
     </Fragment>
   );
 };

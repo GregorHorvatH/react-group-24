@@ -1,3 +1,4 @@
+import React from 'react';
 import moment from 'moment';
 import { makeStyles } from '@material-ui/core/styles';
 import {
@@ -14,7 +15,7 @@ import DeleteTwoToneIcon from '@material-ui/icons/DeleteTwoTone';
 const useStyles = makeStyles({
   todosItem: {
     marginTop: 10,
-    backgroundColor: '#eeeeff',
+    backgroundColor: 'rgba(255,255,255,0)',
   },
 });
 
@@ -28,6 +29,8 @@ const TodosItem = ({
 
   const handleDelete = () => onDelete(id);
   const handleToggle = () => onToggle(id);
+
+  console.log('render:', id);
 
   return (
     <Card className={classes.todosItem}>
@@ -61,4 +64,8 @@ const TodosItem = ({
   );
 };
 
-export default TodosItem;
+const areEqual = (prevProps, nextProps) => {
+  return prevProps.todo.isDone === nextProps.todo.isDone;
+};
+
+export default React.memo(TodosItem, areEqual);

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import TodosInputForm from '../components/TodosInputForm';
 import TodosList from '../components/TodosList';
 
@@ -26,6 +26,16 @@ const TodosPage = () => {
       ),
     );
   };
+
+  // didMount
+  useEffect(() => {
+    setTodos(JSON.parse(localStorage.getItem('todos')));
+  }, []);
+
+  // didUpdate
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todos));
+  }, [todos]);
 
   return (
     <div className="todos">
