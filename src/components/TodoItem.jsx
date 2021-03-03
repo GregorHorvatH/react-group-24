@@ -15,7 +15,7 @@ import DeleteTwoToneIcon from '@material-ui/icons/DeleteTwoTone';
 const useStyles = makeStyles({
   todosItem: {
     marginTop: 10,
-    backgroundColor: 'rgba(255,255,255,0)',
+    // backgroundColor: 'rgba(255,255,255,0)',
   },
 });
 
@@ -29,8 +29,6 @@ const TodosItem = ({
 
   const handleDelete = () => onDelete(id);
   const handleToggle = () => onToggle(id);
-
-  console.log('render:', id);
 
   return (
     <Card className={classes.todosItem}>
