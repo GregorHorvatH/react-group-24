@@ -84,6 +84,18 @@ const TodosPage = () => {
       .finally(() => setIsLoading(false));
   };
 
+  handleSubmit = (data) => {
+    const { firstName, lastName } = data;
+    const updatedFirstName = `${firstName} fdghjkl`;
+
+    const payload = {
+      lastName,
+      firstName: updatedFirstName,
+    };
+
+    fetch(payload);
+  };
+
   // componentDidMount
   useEffect(() => {
     setIsLoading(true);
