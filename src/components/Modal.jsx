@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { createUseStyles } from 'react-jss';
 
 const useStyles = createUseStyles({
@@ -24,19 +25,17 @@ const useStyles = createUseStyles({
   },
 });
 
-const Modal = ({ text, onOk, onCancel }) => {
+const Modal = ({ children, onClose }) => {
   const classes = useStyles();
 
-  return (
-    <div className={classes.backdrop}>
-      <div className={classes.modal}>
-        <h2>Do you really want to delete:</h2>
-        <p>{text}</p>
+  const handleOnClose = () => {
+    onClose();
+  };
 
-        <div className="bnuttons">
-          <button onClick={onCancel}>Cancel</button>
-          <button onClick={onOk}>Ok</button>
-        </div>
+  return (
+    <div className={classes.backdrop} onClick={handleOnClose}>
+      <div className={classes.modal} onClick={(e) => e.stopPropagation()}>
+        {children}
       </div>
     </div>
   );

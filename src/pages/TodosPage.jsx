@@ -84,17 +84,17 @@ const TodosPage = () => {
       .finally(() => setIsLoading(false));
   };
 
-  handleSubmit = (data) => {
-    const { firstName, lastName } = data;
-    const updatedFirstName = `${firstName} fdghjkl`;
+  // const handleSubmit = (data) => {
+  //   const { firstName, lastName } = data;
+  //   const updatedFirstName = `${firstName} fdghjkl`;
 
-    const payload = {
-      lastName,
-      firstName: updatedFirstName,
-    };
+  //   const payload = {
+  //     lastName,
+  //     firstName: updatedFirstName,
+  //   };
 
-    fetch(payload);
-  };
+  //   fetch(payload);
+  // };
 
   // componentDidMount
   useEffect(() => {
@@ -133,11 +133,17 @@ const TodosPage = () => {
       )}
 
       {showModal && (
-        <Modal
-          text={currentTodo.value}
-          onCancel={handleCancelModal}
-          onOk={handleOkModal}
-        />
+        <Modal onClose={handleCancelModal}>
+          <>
+            <h2>Do you really want to delete:</h2>
+            <p>{currentTodo.value}</p>
+
+            <div className="buttons">
+              <button onClick={handleCancelModal}>Cancel</button>
+              <button onClick={handleOkModal}>Ok</button>
+            </div>
+          </>
+        </Modal>
       )}
     </div>
   );

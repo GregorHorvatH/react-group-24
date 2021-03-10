@@ -4,7 +4,7 @@ const UserData = ({ user }) => {
   return (
     <div className="user-data">
       <p>FirstName: {firstName}</p>
-      <p>LastName: {lastName}</p>
+      <p data-testid="lastname">LastName: {lastName}</p>
       <p>Email: {email}</p>
       <p>Age: {age}</p>
     </div>
@@ -12,3 +12,5 @@ const UserData = ({ user }) => {
 };
 
 export default UserData;
+
+// <p>LastName: Bobby</p>
