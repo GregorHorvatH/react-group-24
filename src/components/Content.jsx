@@ -1,25 +1,18 @@
-import React from 'react';
+import React, { Suspense } from 'react';
+import { Switch, Route } from 'react-router-dom';
 import { routes } from '../routes';
 import styles from './content.module.scss';
 
-const Content = () => {
-  const { pathname } = window.location;
-
-  return (
-    <div className={styles.content}>
-      {routes.map(
-        ({ path, component: Component }) =>
-          pathname === path && <Component key={path} />,
-      )}
-
-      {/* {pathname === '/' && <HomePage />}
-      {pathname === '/users-page' && <UsersPage />}
-      {pathname === '/home-works' && <HomeWorksPage />}
-      {pathname === '/books' && <BooksPage />}
-      {pathname === '/tests' && <TestPage />}
-      {pathname === '/about' && <AboutPage />} */}
-    </div>
-  );
-};
+const Content = () => (
+  <div className={styles.content}>
+    <Suspense fallback={<p>Loading...</p>}>
+      <Switch>
+        {routes.map(({ path, exact, component: Component }) => (
+          <Route key={path} path={path} exact={exact} component={Component} />
+        ))}
+      </Switch>
+    </Suspense>
+  </div>
+);
 
 export default Content;

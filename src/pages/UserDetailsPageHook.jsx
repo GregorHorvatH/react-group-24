@@ -1,14 +1,21 @@
-import React, { useState } from 'react';
+import axios from 'axios';
+import React, { useState, useEffect } from 'react';
 import UserData from '../components/UserData';
 
-const UserDetailsPageHook = () => {
-  const [user, setUser] = useState({
-    firstName: 'Ivanov',
-    lastName: 'Ivan',
-    age: 25,
-    email: 'ivan.ivanov@gmail.com',
-    inputValue: 'ertyuiop',
-  });
+const UserDetailsPageHook = ({
+  history,
+  location,
+  match: {
+    params: { id },
+  },
+}) => {
+  const [user, setUser] = useState({});
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:8080/users/${id}`)
+      .then(({ data }) => setUser(data));
+  }, [id]);
 
   const handleInputChange = (e) => {
     setUser((prevState) => ({
@@ -17,12 +24,11 @@ const UserDetailsPageHook = () => {
     }));
   };
 
-  const handleButtonClick = () => {
-    setUser((prevState) => ({
-      ...prevState,
-      age: prevState.age + 1,
-    }));
-  };
+  const handleButtonClick = () =>
+    history.push({
+      pathname: '/users',
+      search: `?filter=${location.state.filter}`,
+    });
 
   return (
     <div className="user-details">
@@ -33,7 +39,7 @@ const UserDetailsPageHook = () => {
       <input type="text" onChange={handleInputChange} value={user.inputValue} />
       <p>Hello: {user.inputValue}</p>
 
-      <button onClick={handleButtonClick}>Load User Data</button>
+      <button onClick={handleButtonClick}>Back</button>
     </div>
   );
 };

@@ -1,16 +1,17 @@
 const UserData = ({ user }) => {
-  const { firstName, lastName, email, age = 15 } = user;
+  const { name, dob, email, picture } = user;
 
-  return (
+  return name?.first ? (
     <div className="user-data">
-      <p>FirstName: {firstName}</p>
-      <p data-testid="lastname">LastName: {lastName}</p>
+      <img src={picture?.large} alt={name?.first} />
+      <p>FirstName: {name?.first}</p>
+      <p data-testid="lastname">LastName: {name?.last}</p>
       <p>Email: {email}</p>
-      <p>Age: {age}</p>
+      <p>Age: {dob?.age}</p>
     </div>
+  ) : (
+    <p>Loading...</p>
   );
 };
 
 export default UserData;
-
-// <p>LastName: Bobby</p>

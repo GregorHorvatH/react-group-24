@@ -1,5 +1,5 @@
 import React from 'react';
-import NavLink from '../NavLink';
+import { NavLink } from 'react-router-dom';
 import { routes } from '../../routes';
 import useStyles from './style';
 
@@ -8,9 +8,19 @@ const Navigation = () => {
 
   return (
     <div className={classes.navigation}>
-      {routes.map(({ path, label }) => (
-        <NavLink key={path} path={path} label={label} />
-      ))}
+      {routes.map(({ path, label, showInMenu }) =>
+        showInMenu ? (
+          <NavLink
+            key={path}
+            className={classes.link}
+            activeClassName={classes.activeLink}
+            to={path}
+            exact
+          >
+            {label}
+          </NavLink>
+        ) : null,
+      )}
     </div>
   );
 };

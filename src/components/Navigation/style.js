@@ -12,4 +12,21 @@ export default createUseStyles({
     maxWidth: 200,
     overflow: 'auto',
   },
+  link: {
+    backgroundColor: 'inherit',
+    textDecoration: 'none',
+    padding: 10,
+    color: '#000',
+
+    '&:hover': {
+      backgroundColor: '#e0dff2',
+    },
+  },
+  activeLink: {
+    backgroundColor: '#2f2e73',
+    color: '#fff',
+    '&:hover': {
+      backgroundColor: '#151433',
+    },
+  },
 });
