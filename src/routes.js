@@ -32,6 +32,7 @@ const TodosPage = lazy(() =>
 const AboutPage = lazy(() =>
   import('./pages/AboutPage' /* webpackChunkName: "AboutPage" */),
 );
+const Hoc = lazy(() => import('./pages/Hoc' /* webpackChunkName: "Hoc" */));
 
 export const routes = [
   {
@@ -92,6 +93,12 @@ export const routes = [
     path: '/todos',
     label: 'Todos',
     component: TodosPage,
+    showInMenu: true,
+  },
+  {
+    path: '/hoc',
+    label: 'HOC',
+    component: Hoc,
     showInMenu: true,
   },
   {
