@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Counter from '../components/Counter';
+import CounterRedux from '../components/CounterRedux';
 
 const CountersPage = () => {
   const [counters, setCounters] = useState([]);
@@ -29,6 +30,7 @@ const CountersPage = () => {
         <Counter key={id} onDelete={() => handleDelete(id)} />
       ))}
 
+      <CounterRedux />
       {/* <Counter value={5} />
       <Counter value={10} />
       <Counter /> */}

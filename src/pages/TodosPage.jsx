@@ -1,36 +1,41 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import TodosInputForm from '../components/TodosInputForm';
 import TodosList from '../components/TodosList';
 import Modal from '../components/Modal';
 // import Loader from '../components/Loader';
 import ClipLoader from 'react-spinners/ClipLoader';
-import {
-  getTodos,
-  createTodo,
-  deleteTodo,
-  updateTodo,
-} from '../utils/todosAPI';
-import { toast } from 'react-toastify';
+import { addTodo, deleteTodo } from '../reducer/todos/actions';
+// import {
+//   getTodos,
+//   createTodo,
+//   deleteTodo,
+//   updateTodo,
+// } from '../utils/todosAPI';
+// import { toast } from 'react-toastify';
 
 const TodosPage = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const [todos, setTodos] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [currentTodo, setCurrentTodo] = useState();
+
+  const dispatch = useDispatch();
+  const todos = useSelector((state) => state.todos.items);
 
   const handleSubmit = (todo) => {
     if (todos.find(({ value }) => value === todo.value)) return;
 
-    setIsLoading(true);
+    dispatch(addTodo(todo));
 
-    createTodo(todo)
-      .then((data) => setTodos((prevState) => [data, ...prevState]))
-      .catch((error) =>
-        toast(error.message, {
-          type: 'error',
-        }),
-      )
-      .finally(() => setIsLoading(false));
+    // setIsLoading(true);
+    // createTodo(todo)
+    //   .then((data) => setTodos((prevState) => [data, ...prevState]))
+    //   .catch((error) =>
+    //     toast(error.message, {
+    //       type: 'error',
+    //     }),
+    //   )
+    //   .finally(() => setIsLoading(false));
   };
 
   const handleDeleteTodo = (id) => {
@@ -44,23 +49,25 @@ const TodosPage = () => {
 
   const handleOkModal = () => {
     setShowModal(false);
-    setIsLoading(true);
 
-    deleteTodo(currentTodo.id)
-      .then((id) =>
-        setTodos((prevState) => prevState.filter((todo) => todo.id !== id)),
-      )
-      .then(() =>
-        toast(`"${currentTodo.value}" is successfully deleted`, {
-          type: 'success',
-        }),
-      )
-      .catch((error) =>
-        toast(error.message, {
-          type: 'error',
-        }),
-      )
-      .finally(() => setIsLoading(false));
+    dispatch(deleteTodo(currentTodo.id));
+
+    // setIsLoading(true);
+    // deleteTodo(currentTodo.id)
+    //   .then((id) =>
+    //     setTodos((prevState) => prevState.filter((todo) => todo.id !== id)),
+    //   )
+    //   .then(() =>
+    //     toast(`"${currentTodo.value}" is successfully deleted`, {
+    //       type: 'success',
+    //     }),
+    //   )
+    //   .catch((error) =>
+    //     toast(error.message, {
+    //       type: 'error',
+    //     }),
+    //   )
+    //   .finally(() => setIsLoading(false));
   };
 
   const handleToggleTodo = (id) => {
@@ -68,20 +75,20 @@ const TodosPage = () => {
 
     setIsLoading(true);
 
-    updateTodo(id, { isDone: !todo.isDone })
-      .then((updatedToto) =>
-        setTodos((prevState) =>
-          prevState.map((todo) =>
-            todo.id === updatedToto.id ? updatedToto : todo,
-          ),
-        ),
-      )
-      .catch((error) =>
-        toast(error.message, {
-          type: 'error',
-        }),
-      )
-      .finally(() => setIsLoading(false));
+    // updateTodo(id, { isDone: !todo.isDone })
+    //   .then((updatedToto) =>
+    //     setTodos((prevState) =>
+    //       prevState.map((todo) =>
+    //         todo.id === updatedToto.id ? updatedToto : todo,
+    //       ),
+    //     ),
+    //   )
+    //   .catch((error) =>
+    //     toast(error.message, {
+    //       type: 'error',
+    //     }),
+    //   )
+    //   .finally(() => setIsLoading(false));
   };
 
   // const handleSubmit = (data) => {
@@ -97,23 +104,18 @@ const TodosPage = () => {
   // };
 
   // componentDidMount
-  useEffect(() => {
-    setIsLoading(true);
+  // useEffect(() => {
+  //   setIsLoading(true);
 
-    getTodos()
-      .then((result) => setTodos(result))
-      .catch((error) =>
-        toast(error.message, {
-          type: 'error',
-        }),
-      )
-      .finally(() => setIsLoading(false));
-  }, []);
-
-  // didUpdate
-  useEffect(() => {
-    // localStorage.setItem('todos', JSON.stringify(todos));
-  }, [todos]);
+  //   getTodos()
+  //     .then((result) => setTodos(result))
+  //     .catch((error) =>
+  //       toast(error.message, {
+  //         type: 'error',
+  //       }),
+  //     )
+  //     .finally(() => setIsLoading(false));
+  // }, []);
 
   return (
     <div className="todos">
@@ -148,5 +150,11 @@ const TodosPage = () => {
     </div>
   );
 };
+
+// const mapStateToProps = (state) => ({
+//   todos: state.todos,
+// });
+
+// export default connect(mapStateToProps)(TodosPage);
 
 export default TodosPage;
