@@ -1,0 +1,1 @@
+{"version":3,"sources":["pages/HomeWorksPage.jsx"],"names":["HomeWorksPage"],"mappings":"wHAAA,uBAIeA,UAFO,kBAAM","file":"static/js/HomeWorksPage.548166dc.chunk.js","sourcesContent":["import React from 'react';\n\nconst HomeWorksPage = () => <h1>HomeWorks Page</h1>;\n\nexport default HomeWorksPage;\n"],"sourceRoot":""}
