@@ -1,2 +1,0 @@
-(this["webpackJsonpreact-group-24"]=this["webpackJsonpreact-group-24"]||[]).push([[14],{206:function(e,t,r){"use strict";r.r(t);r(0);var c=r(3);t.default=function(){return Object(c.jsx)("h1",{children:"Home Page"})}}}]);
-//# sourceMappingURL=home-page.b85d67eb.chunk.js.map
