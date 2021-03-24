@@ -5,6 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles({
   todosList: {
     // background: `url(${cat})`,
+    overflow: 'auto',
   },
 });
 

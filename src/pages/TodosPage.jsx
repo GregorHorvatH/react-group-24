@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { createUseStyles } from 'react-jss';
 import TodosInputForm from '../components/TodosInputForm';
 import TodosList from '../components/TodosList';
 import Modal from '../components/Modal';
@@ -14,7 +15,16 @@ import { addTodo, deleteTodo } from '../reducer/todos/actions';
 // } from '../utils/todosAPI';
 // import { toast } from 'react-toastify';
 
+const useStyles = createUseStyles({
+  todos: {
+    display: 'flex',
+    flexDirection: 'column',
+    overflow: 'hidden',
+  },
+});
+
 const TodosPage = () => {
+  const classes = useStyles();
   const [isLoading, setIsLoading] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [currentTodo, setCurrentTodo] = useState();
@@ -118,7 +128,7 @@ const TodosPage = () => {
   // }, []);
 
   return (
-    <div className="todos">
+    <div className={classes.todos}>
       <h1>Todos</h1>
 
       <ClipLoader loading={isLoading} />

@@ -33,6 +33,8 @@ const AboutPage = lazy(() =>
   import('./pages/AboutPage' /* webpackChunkName: "AboutPage" */),
 );
 const Hoc = lazy(() => import('./pages/Hoc' /* webpackChunkName: "Hoc" */));
+const Shop = lazy(() => import('./pages/Shop' /* webpackChunkName: "Shop" */));
+const Cart = lazy(() => import('./pages/Cart' /* webpackChunkName: "Cart" */));
 
 export const routes = [
   {
@@ -99,6 +101,18 @@ export const routes = [
     path: '/hoc',
     label: 'HOC',
     component: Hoc,
+    showInMenu: true,
+  },
+  {
+    path: '/shop',
+    label: 'Shop',
+    component: Shop,
+    showInMenu: true,
+  },
+  {
+    path: '/cart',
+    label: 'Cart',
+    component: Cart,
     showInMenu: true,
   },
   {
