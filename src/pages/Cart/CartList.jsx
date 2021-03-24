@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { getCartItemsSelector } from './selectors';
+import { getCartItemsSelector } from '../../reducer/shop/selectors';
 import CartItem from './CartItem';
 import useStyles from './cart.styles';
 

@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import ProductItem from './ProductItem';
-import { getShopItemsSelector } from './selectors';
+import { getShopItemsSelector } from '../../reducer/shop/selectors';
 import useStyles from './shop.styles';
 
 const ProductList = () => {

@@ -3,7 +3,10 @@ import Card from '@material-ui/core/Card';
 import { CardActionArea, IconButton } from '@material-ui/core';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import AddShoppingCartOutlinedIcon from '@material-ui/icons/AddShoppingCartOutlined';
-import { getShopItemSelector, getCartItemSelector } from './selectors';
+import {
+  getShopItemSelector,
+  getCartItemSelector,
+} from '../../reducer/shop/selectors';
 import { shopCartAdd, shopCartDelete } from '../../reducer/shop/actions';
 import useStyles from './shop.styles';
 

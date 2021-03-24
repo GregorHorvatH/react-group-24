@@ -2,7 +2,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import Card from '@material-ui/core/Card';
 import { IconButton, Button } from '@material-ui/core';
 import DeleteForeverOutlinedIcon from '@material-ui/icons/DeleteForeverOutlined';
-import { getShopItemSelector } from './selectors';
+import { getShopItemSelector } from '../../reducer/shop/selectors';
 import {
   cartIncrement,
   cartDecrement,
@@ -12,8 +12,9 @@ import useStyles from './cart.styles';
 
 const CartItem = ({ item }) => {
   const classes = useStyles();
-  const { id, name } = useSelector(getShopItemSelector(item.productId));
   const dispatch = useDispatch();
+  const { id, name, price } = useSelector(getShopItemSelector(item.productId));
+  const sum = price * item.count;
 
   const handleIncrement = () => dispatch(cartIncrement(item.id));
   const handleDecrement = () => dispatch(cartDecrement(item.id));
@@ -30,6 +31,10 @@ const CartItem = ({ item }) => {
           <span>{item.count}</span>
           <Button onClick={handleIncrement}>+</Button>
         </div>
+        <p>price: {price}</p>
+        <p>
+          sum: <b>{sum}</b>
+        </p>
       </Card>
 
       <IconButton onClick={handleDelete}>
