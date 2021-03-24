@@ -1,5 +1,6 @@
-import { combineReducers } from 'redux';
-import types from './types';
+// ===== after =====
+import { createReducer, combineReducers } from '@reduxjs/toolkit';
+import * as actions from './actions';
 
 const initialState = {
   items: [
@@ -53,48 +54,88 @@ const initialState = {
 
 const items = (state = initialState.items, action) => state;
 
-const cart = (state = initialState.cart, action) => {
-  switch (action.type) {
-    case types.SHOP_CART_ADD:
-      return [...state, action.payload];
+// ===== before =====
+// import { combineReducers } from 'redux';
+// import types from './types';
 
-    case types.SHOP_CART_DELETE:
-      return state.filter(({ productId }) => productId !== action.payload);
+// const cart = (state = initialState.cart, action) => {
+//   switch (action.type) {
+//     case types.SHOP_CART_ADD:
+//       return [...state, action.payload];
 
-    case types.CART_INCREMENT:
-      return state.map((item) =>
-        item.id === action.payload
-          ? {
-              ...item,
-              count: item.count + 1,
-            }
-          : item,
-      );
+//     case types.SHOP_CART_DELETE:
+//       return state.filter(({ productId }) => productId !== action.payload);
 
-    case types.CART_DECREMENT:
-      return state.map((item) =>
-        item.id === action.payload
-          ? {
-              ...item,
-              count: item.count - 1 < 0 ? 0 : item.count - 1,
-            }
-          : item,
-      );
+//     case types.CART_INCREMENT:
+//       return state.map((item) =>
+//         item.id === action.payload
+//           ? {
+//               ...item,
+//               count: item.count + 1,
+//             }
+//           : item,
+//       );
 
-    default:
-      return state;
-  }
-};
+//     case types.CART_DECREMENT:
+//       return state.map((item) =>
+//         item.id === action.payload
+//           ? {
+//               ...item,
+//               count: item.count - 1 < 0 ? 0 : item.count - 1,
+//             }
+//           : item,
+//       );
 
-const filter = (state = initialState.filter, action) => {
-  switch (action.type) {
-    case types.SHOP_FILTER_SET:
-      return action.payload;
+//     default:
+//       return state;
+//   }
+// };
 
-    default:
-      return state;
-  }
-};
+// const filter = (state = initialState.filter, action) => {
+//   switch (action.type) {
+//     case types.SHOP_FILTER_SET:
+//       return action.payload;
+
+//     default:
+//       return state;
+//   }
+// };
+
+const shopCartAdd = (state, action) => [...state, action.payload];
+
+const shopCartDelete = (state, action) =>
+  state.filter(({ productId }) => productId !== action.payload);
+
+const cartIncrement = (state, action) =>
+  state.map((item) =>
+    item.id === action.payload
+      ? {
+          ...item,
+          count: item.count + 1,
+        }
+      : item,
+  );
+
+const cartDecrement = (state, action) =>
+  state.map((item) =>
+    item.id === action.payload
+      ? {
+          ...item,
+          count: item.count - 1 < 0 ? 0 : item.count - 1,
+        }
+      : item,
+  );
+
+const cart = createReducer(initialState.cart, {
+  [actions.shopCartAdd.type]: shopCartAdd,
+  [actions.shopCartDelete.type]: shopCartDelete,
+  [actions.cartIncrement.type]: cartIncrement,
+  [actions.cartDecrement.type]: cartDecrement,
+});
+
+const filter = createReducer(initialState.filter, {
+  [actions.shopFilterSet.type]: (state, action) => action.payload,
+});
 
 export default combineReducers({
   items,

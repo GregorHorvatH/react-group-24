@@ -1,7 +1,8 @@
 export const getShopItemsSelector = (state) => state.shop.items;
 
-export const getShopItemSelector = (id) => (state) =>
-  state.shop.items.find((item) => item.id === id);
+export const getShopItemSelector = (id) => {
+  return (state) => state.shop.items.find((item) => item.id === id);
+};
 
 export const getCartItemSelector = (id) => (state) =>
   state.shop.cart.find(({ productId }) => productId === id);
