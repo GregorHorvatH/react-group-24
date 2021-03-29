@@ -1,24 +1,13 @@
-import { useState } from 'react';
-
-const Counter = ({ value = 0, onDelete }) => {
-  const [count, setCount] = useState(value); // [value, setValue]
-
-  const handleDecrement = () => setCount(count - 1);
-  const handleIncrement = () => setCount(count + 1);
-
+const Counter = ({ value = 0, onIncrement, onDecrement, onDelete }) => {
   return (
     <div className="counter">
-      <button onClick={handleDecrement}>-</button>
-      <span>{count}</span>
-      <button onClick={handleIncrement}>+</button>
+      <button onClick={onDecrement}>-</button>
+      <span>{value}</span>
+      <button onClick={onIncrement}>+</button>
 
       <button onClick={onDelete}>X</button>
     </div>
   );
 };
-
-// Counter.defaultProps = {
-//   value: 0,
-// };
 
 export default Counter;

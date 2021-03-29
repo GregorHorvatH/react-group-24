@@ -1,8 +1,18 @@
 // import { createStore } from 'redux';
 import reducer from './reducer';
 import { configureStore } from '@reduxjs/toolkit';
+// import thunk from 'thunk';
 
-const store = configureStore({ reducer });
+// const logger = (store) => (next) => (action) => {
+//   console.log('type:', action.type);
+
+//   // next(action);
+// };
+
+const store = configureStore({
+  reducer,
+  // middleware: [logger],
+});
 
 // const data = {
 //   counter: {

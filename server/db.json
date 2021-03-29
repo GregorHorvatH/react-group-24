@@ -28,5 +28,47 @@
       "urgency": "low",
       "id": 5
     }
+  ],
+  "shop-items": [
+    {
+      "id": 1,
+      "name": "phone 1",
+      "price": 5000,
+      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur ab optio explicabo cumque ut! Provident quasi, explicabo perferendis nobis vero pariatur architecto culpa laudantium praesentium perspiciatis tenetur commodi ex similique.",
+      "count": 5
+    },
+    {
+      "id": 2,
+      "name": "phone 2",
+      "price": 7000,
+      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur ab optio explicabo cumque ut! Provident quasi, explicabo perferendis nobis vero pariatur architecto culpa laudantium praesentium perspiciatis tenetur commodi ex similique.",
+      "count": 3
+    },
+    {
+      "id": 3,
+      "name": "phone 3",
+      "price": 8000,
+      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur ab optio explicabo cumque ut! Provident quasi, explicabo perferendis nobis vero pariatur architecto culpa laudantium praesentium perspiciatis tenetur commodi ex similique.",
+      "count": 1
+    },
+    {
+      "id": 4,
+      "name": "notebook 1",
+      "price": 11000,
+      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur ab optio explicabo cumque ut! Provident quasi, explicabo perferendis nobis vero pariatur architecto culpa laudantium praesentium perspiciatis tenetur commodi ex similique.",
+      "count": 2
+    }
+  ],
+  "cart": [
+    {
+      "id": 1,
+      "productId": 2,
+      "count": 1
+    },
+    {
+      "id": 2,
+      "productId": 4,
+      "count": 1
+    }
   ]
 }

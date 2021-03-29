@@ -19,3 +19,6 @@ export const getCartTotalSelector = (state) =>
         count * state.shop.items.find(({ id }) => id === productId).price,
     )
     .reduce((acc, amount) => acc + amount, 0);
+
+export const getIsLoadingSelector = (state) => state.shop.isLoading;
+export const getCartIsLoadingSelector = (state) => state.shop.cartIsLoading;

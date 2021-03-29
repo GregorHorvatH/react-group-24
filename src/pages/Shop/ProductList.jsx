@@ -1,13 +1,19 @@
 import { useSelector } from 'react-redux';
 import ProductItem from './ProductItem';
-import { getShopItemsSelector } from '../../reducer/shop/selectors';
+import {
+  getShopItemsSelector,
+  getIsLoadingSelector,
+} from '../../reducer/shop/selectors';
 import useStyles from './shop.styles';
 
 const ProductList = () => {
   const classes = useStyles();
   const items = useSelector(getShopItemsSelector);
+  const isLoading = useSelector(getIsLoadingSelector);
 
-  return (
+  return isLoading ? (
+    <p>Loading...</p>
+  ) : (
     <ul className={classes.productList}>
       {items.map(({ id }) => (
         <ProductItem key={id} id={id} />
