@@ -9,3 +9,17 @@ export const deleteTodo = (id) => ({
   type: types.TODO_DELETE,
   payload: id,
 });
+
+export const toggleTodo = (id) => ({
+  type: types.TODO_TOGGLE,
+  payload: id,
+});
+
+export const selectTodo = (id) => ({
+  type: types.TODO_SELECT,
+  payload: id,
+});
+
+export const toggleModal = () => ({
+  type: types.MODAL_TOGGLE,
+});

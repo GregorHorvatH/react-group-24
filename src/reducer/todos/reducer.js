@@ -1,18 +1,19 @@
 import types from './types';
 
 const initialState = {
-  x: 0,
+  showModal: false,
+  selectedTodo: undefined,
   items: [
     {
       id: 2,
       value: 'buy something',
       date: 1614624203912,
-      isDone: false,
+      isDone: true,
       urgency: 'low',
     },
     {
       date: 1615402045698,
-      isDone: false,
+      isDone: true,
       value: 'sdfgsg',
       urgency: 'low',
       id: 3,
@@ -37,10 +38,12 @@ const initialState = {
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case types.TODO_ADD:
-      return {
-        ...state,
-        items: [...state.items, action.payload],
-      };
+      return state.items.find(({ value }) => value === action.payload.value)
+        ? state
+        : {
+            ...state,
+            items: [...state.items, action.payload],
+          };
 
     case types.TODO_DELETE:
       return {
@@ -48,10 +51,29 @@ const reducer = (state = initialState, action) => {
         items: state.items.filter((todo) => todo.id !== action.payload),
       };
 
-    case 'counter/increment':
+    case types.TODO_TOGGLE:
       return {
         ...state,
-        x: state.x + 1,
+        items: state.items.map((todo) =>
+          todo.id === action.payload
+            ? {
+                ...todo,
+                isDone: !todo.isDone,
+              }
+            : todo,
+        ),
+      };
+
+    case types.TODO_SELECT:
+      return {
+        ...state,
+        selectedTodo: state.items.find((todo) => todo.id === action.payload),
+      };
+
+    case types.MODAL_TOGGLE:
+      return {
+        ...state,
+        showModal: !state.showModal,
       };
 
     default:

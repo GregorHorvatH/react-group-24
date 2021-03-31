@@ -1,27 +1,24 @@
+import React from 'react';
 import TodoItem from './TodoItem';
 import { makeStyles } from '@material-ui/core/styles';
-// import cat from '../images/cat.jpg';
 
 const useStyles = makeStyles({
   todosList: {
-    // background: `url(${cat})`,
     overflow: 'auto',
+    borderBottom: '1px solid black',
+    marginBottom: 10,
   },
 });
 
-const TodosList = ({ todos, onDelete, onToggle }) => {
+const TodosList = ({ label, todos }) => {
   const classes = useStyles();
+
+  console.log('render:', label);
 
   return (
     <div className={classes.todosList}>
-      {/* <img src={cat} alt="cat" width="200px" /> */}
       {todos.map((todo) => (
-        <TodoItem
-          key={todo.id}
-          todo={todo}
-          onDelete={onDelete}
-          onToggle={onToggle}
-        />
+        <TodoItem key={todo.id} todo={todo} />
       ))}
     </div>
   );

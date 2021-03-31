@@ -1,5 +1,7 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { createUseStyles } from 'react-jss';
+import { addTodo } from '../reducer/todos/actions';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 
@@ -18,8 +20,9 @@ const useStyles = createUseStyles({
   },
 });
 
-const TodosInputForm = ({ onSubmit }) => {
+const TodosInputForm = () => {
   const classes = useStyles();
+  const dispatch = useDispatch();
   const [showForm, setShowForm] = useState(false);
   const [value, setValue] = useState('');
   const [urgency, setUrgency] = useState('low');
@@ -34,14 +37,15 @@ const TodosInputForm = ({ onSubmit }) => {
     if (!value) return;
 
     const newTodo = {
-      // id: Date.now(),
+      id: Date.now(),
       date: Date.now(),
       isDone: false,
       value,
       urgency,
     };
 
-    onSubmit(newTodo);
+    dispatch(addTodo(newTodo));
+
     setValue('');
     setUrgency('low');
     setShowForm(false);

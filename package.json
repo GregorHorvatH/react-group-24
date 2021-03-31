@@ -25,6 +25,7 @@
     "react-toastify": "^7.0.3",
     "recompose": "^0.30.0",
     "redux": "^4.0.5",
+    "reselect": "^4.0.0",
     "sass": "^1.32.7",
     "web-vitals": "^1.0.1"
   },
