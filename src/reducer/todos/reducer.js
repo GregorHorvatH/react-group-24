@@ -70,6 +70,19 @@ const reducer = (state = initialState, action) => {
         selectedTodo: state.items.find((todo) => todo.id === action.payload),
       };
 
+    case types.TODO_EDIT:
+      return {
+        ...state,
+        items: state.items.map((item) =>
+          item.id === action.payload.id
+            ? {
+                ...item,
+                ...action.payload,
+              }
+            : item,
+        ),
+      };
+
     case types.MODAL_TOGGLE:
       return {
         ...state,

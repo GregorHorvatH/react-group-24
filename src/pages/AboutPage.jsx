@@ -1,21 +1,34 @@
-import React, { useContext } from 'react';
-import UserContext from '../userContext';
-import ThemeContext from '../themeContext';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getCurrenUser } from '../reducer/user/operations';
+import {
+  getUserSelector,
+  getIsLoadingSelector,
+} from '../reducer/user/selectors';
 
 const AboutPage = () => {
-  const { user, addOneYear } = useContext(UserContext);
-  const styles = useContext(ThemeContext);
+  const dispatch = useDispatch();
+  const { name, email } = useSelector(getUserSelector);
+  const isLoading = useSelector(getIsLoadingSelector);
 
-  console.log('styles:', styles);
+  // componentDidMount
+  useEffect(() => {
+    dispatch(getCurrenUser());
+  }, [dispatch]);
 
   return (
-    <>
+    <div className="about-page">
       <h1>About Page</h1>
-      <p>user name: {user.firstName}</p>
-      <p>user age: {user.age}</p>
 
-      <button onClick={addOneYear}>add one year</button>
-    </>
+      {isLoading ? (
+        <p>Loading...</p>
+      ) : (
+        <>
+          <p>name: {name}</p>
+          <p>email: {email}</p>
+        </>
+      )}
+    </div>
   );
 };
 

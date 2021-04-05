@@ -1,7 +1,8 @@
 import { createUseStyles } from 'react-jss';
 import TodosInputForm from '../components/TodosInputForm';
-import TodosListIsDone from '../components/TodosListIsDone';
-import TodosListIsNotDone from '../components/TodosListIsNotDone';
+// import TodosListIsDone from '../components/TodosListIsDone';
+// import TodosListIsNotDone from '../components/TodosListIsNotDone';
+import TodosListIsAll from '../components/TodosListIsAll';
 import TodoCount from '../components/TodoCount';
 import CounterRedux from '../components/CounterRedux';
 
@@ -24,8 +25,10 @@ const TodosPage = () => {
       <TodoCount />
       <TodosInputForm />
 
-      <TodosListIsDone label="IS DONE" />
-      <TodosListIsNotDone label="NOT DONE" />
+      <TodosListIsAll label="all" />
+
+      {/* <TodosListIsDone label="IS DONE" />
+      <TodosListIsNotDone label="NOT DONE" /> */}
     </div>
   );
 };

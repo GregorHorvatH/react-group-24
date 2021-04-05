@@ -13,8 +13,6 @@ const useStyles = makeStyles({
 const TodosList = ({ label, todos }) => {
   const classes = useStyles();
 
-  console.log('render:', label);
-
   return (
     <div className={classes.todosList}>
       {todos.map((todo) => (

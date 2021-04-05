@@ -35,6 +35,9 @@ const AboutPage = lazy(() =>
 const Hoc = lazy(() => import('./pages/Hoc' /* webpackChunkName: "Hoc" */));
 const Shop = lazy(() => import('./pages/Shop' /* webpackChunkName: "Shop" */));
 const Cart = lazy(() => import('./pages/Cart' /* webpackChunkName: "Cart" */));
+const LoginPage = lazy(() =>
+  import('./pages/LoginPage' /* webpackChunkName: "LoginPage" */),
+);
 
 export const routes = [
   {
@@ -119,6 +122,12 @@ export const routes = [
     path: '/about',
     label: 'About',
     component: AboutPage,
+    showInMenu: true,
+  },
+  {
+    path: '/login',
+    label: 'Login',
+    component: LoginPage,
     showInMenu: true,
   },
 ];

@@ -20,6 +20,11 @@ export const selectTodo = (id) => ({
   payload: id,
 });
 
+export const editTodo = (payload) => ({
+  type: types.TODO_EDIT,
+  payload,
+});
+
 export const toggleModal = () => ({
   type: types.MODAL_TOGGLE,
 });

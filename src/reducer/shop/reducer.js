@@ -129,23 +129,23 @@ const cartDecrement = (state, action) =>
   );
 
 const items = createReducer(initialState.items, {
-  [actions.shopItemsSuccess]: (state, action) => action.payload,
+  [actions.shopItemsSuccess.type]: (_, action) => action.payload,
 });
 
 const isLoading = createReducer(initialState.isLoading, {
-  [actions.shopItemsRequest]: () => true,
-  [actions.shopItemsSuccess]: () => false,
-  [actions.shopItemsFailure]: () => false,
+  [actions.shopItemsRequest.type]: () => true,
+  [actions.shopItemsSuccess.type]: () => false,
+  [actions.shopItemsFailure.type]: () => false,
 });
 
 const cartIsLoading = createReducer(initialState.cartIsLoading, {
-  [actions.cartItemsRequest]: () => true,
-  [actions.cartItemsSuccess]: () => false,
-  [actions.cartItemsFailure]: () => false,
+  [actions.cartItemsRequest.type]: () => true,
+  [actions.cartItemsSuccess.type]: () => false,
+  [actions.cartItemsFailure.type]: () => false,
 });
 
 const cart = createReducer(initialState.cart, {
-  [actions.cartItemsSuccess]: (_, action) => action.payload,
+  [actions.cartItemsSuccess.type]: (_, action) => action.payload,
   [actions.shopCartAdd.type]: shopCartAdd,
   [actions.shopCartDelete.type]: shopCartDelete,
   [actions.cartIncrement.type]: cartIncrement,
