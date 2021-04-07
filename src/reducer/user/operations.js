@@ -18,7 +18,26 @@ export const login = (payload) => (dispatch) => {
     .catch((error) => dispatch(actions.loginFailure(error.message)));
 };
 
-export const getCurrenUser = () => (dispatch) => {
+export const logout = () => (dispatch) => {
+  dispatch(actions.logoutRequest());
+
+  axios
+    .post('/users/logout')
+    .then(() => {
+      dispatch(actions.logoutSuccess());
+      setToken(undefined);
+    })
+    .catch((error) => dispatch(actions.logoutFailure(error.message)));
+};
+
+export const getCurrenUser = () => (dispatch, getState) => {
+  const {
+    user: { token },
+  } = getState();
+
+  if (!token) return;
+
+  setToken(token);
   dispatch(actions.getCurrentUserRequest());
 
   axios

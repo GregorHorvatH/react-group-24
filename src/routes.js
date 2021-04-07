@@ -38,6 +38,9 @@ const Cart = lazy(() => import('./pages/Cart' /* webpackChunkName: "Cart" */));
 const LoginPage = lazy(() =>
   import('./pages/LoginPage' /* webpackChunkName: "LoginPage" */),
 );
+const LogoutPage = lazy(() =>
+  import('./pages/LogoutPage' /* webpackChunkName: "LogoutPage" */),
+);
 
 export const routes = [
   {
@@ -46,6 +49,7 @@ export const routes = [
     component: HomePage,
     exact: true,
     showInMenu: true,
+    needsAuthorization: false,
   },
   {
     path: '/users',
@@ -53,11 +57,13 @@ export const routes = [
     component: UsersPage,
     exact: true,
     showInMenu: true,
+    needsAuthorization: true,
   },
   {
     path: '/users/:id',
     label: 'User Details',
     component: UserDetailsPage,
+    needsAuthorization: true,
   },
   // {
   //   path: '/user-details-hook',
@@ -69,65 +75,83 @@ export const routes = [
     label: 'Home Works',
     component: HomeWorksPage,
     showInMenu: true,
+    needsAuthorization: true,
   },
   {
     path: '/books',
     label: 'Books',
     component: BooksPage,
     showInMenu: true,
+    needsAuthorization: true,
   },
   {
     path: '/counters',
     label: 'Counters',
     component: CountersPage,
     showInMenu: true,
+    needsAuthorization: true,
   },
   {
     path: '/tests',
     label: 'Test',
     component: TestPage,
     showInMenu: true,
+    needsAuthorization: true,
   },
   {
     path: '/props-tests',
     label: 'Props Test',
     component: PropsTestPage,
     showInMenu: true,
+    needsAuthorization: true,
   },
   {
     path: '/todos',
     label: 'Todos',
     component: TodosPage,
     showInMenu: true,
+    needsAuthorization: true,
   },
   {
     path: '/hoc',
     label: 'HOC',
     component: Hoc,
     showInMenu: true,
+    needsAuthorization: true,
   },
   {
     path: '/shop',
     label: 'Shop',
     component: Shop,
     showInMenu: true,
+    needsAuthorization: true,
   },
   {
     path: '/cart',
     label: 'Cart',
     component: Cart,
     showInMenu: true,
+    needsAuthorization: true,
   },
   {
     path: '/about',
     label: 'About',
     component: AboutPage,
     showInMenu: true,
+    needsAuthorization: true,
   },
   {
     path: '/login',
     label: 'Login',
     component: LoginPage,
     showInMenu: true,
+    needsAuthorization: false,
+  },
+  {
+    path: '/logout',
+    label: 'Logout',
+    component: LogoutPage,
+    showInMenu: true,
+    needsAuthorization: true,
   },
 ];

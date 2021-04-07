@@ -1,10 +1,13 @@
-import { useState } from 'react';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { ToastContainer } from 'react-toastify';
 import Navigation from './components/Navigation';
 import Content from './components/Content';
 import styles from './app.module.css';
-import Context from './userContext';
+// import Context from './userContext';
 import ThemeContext from './themeContext';
+import { getCurrenUser } from './reducer/user/operations';
+import { getIsAppLoadingSelector } from './reducer/user/selectors';
 import 'react-toastify/dist/ReactToastify.css';
 
 const contextStyles = {
@@ -13,25 +16,34 @@ const contextStyles = {
 };
 
 const App = () => {
-  const [user, setUser] = useState({
-    firstName: 'Bobby',
-    age: 15,
-  });
+  const dispatch = useDispatch();
+  const isAppLoading = useSelector(getIsAppLoadingSelector);
 
-  const addOneYear = () =>
-    setUser((prev) => ({
-      ...prev,
-      age: prev.age + 1,
-    }));
+  useEffect(() => {
+    dispatch(getCurrenUser());
+  }, []);
 
-  return (
+  // const [user, setUser] = useState({
+  //   firstName: 'Bobby',
+  //   age: 15,
+  // });
+
+  // const addOneYear = () =>
+  //   setUser((prev) => ({
+  //     ...prev,
+  //     age: prev.age + 1,
+  //   }));
+
+  return isAppLoading ? (
+    <p>Loading...</p>
+  ) : (
     <div className={styles.app}>
       <ThemeContext.Provider value={contextStyles}>
-        <Context.Provider value={{ user, addOneYear }}>
-          <Navigation />
-          <Content />
-          <ToastContainer />
-        </Context.Provider>
+        {/* <Context.Provider value={{ user, addOneYear }}> */}
+        <Navigation />
+        <Content />
+        <ToastContainer />
+        {/* </Context.Provider> */}
       </ThemeContext.Provider>
     </div>
   );

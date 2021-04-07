@@ -1,30 +1,19 @@
-// import { createStore } from 'redux';
-import reducer from './reducer';
 import { configureStore } from '@reduxjs/toolkit';
-// import thunk from 'thunk';
+import { persistStore } from 'redux-persist';
+// import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web
+import rootReducer from './reducer';
 
-// const logger = (store) => (next) => (action) => {
-//   console.log('type:', action.type);
-
-//   // next(action);
+// const persistConfig = {
+//   key: 'user',
+//   storage,
+//   whitelist: ['user'],
 // };
 
-const store = configureStore({
-  reducer,
-  // middleware: [logger],
+export const store = configureStore({
+  // reducer: persistReducer(persistConfig, rootReducer),
+  reducer: rootReducer,
 });
 
-// const data = {
-//   counter: {
-//     value: 500,
-//     step: 5,
-//   },
-// };
+export const persistor = persistStore(store);
 
-// const store = createStore(
-//   reducer,
-//   // data,
-//   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
-// );
-
-export default store;
+// export default store;

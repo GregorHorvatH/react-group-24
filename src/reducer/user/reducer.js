@@ -5,8 +5,21 @@ const initialState = {
   user: {},
   token: '',
   isLoading: false,
+  isAppLoading: true,
+  isAuthorized: false,
   error: '',
 };
+
+const isAppLoading = createReducer(initialState.isAppLoading, {
+  [actions.getCurrentUserSuccess.type]: () => false,
+  [actions.getCurrentUserFailure.type]: () => false,
+});
+
+const isAuthorized = createReducer(initialState.isAuthorized, {
+  [actions.getCurrentUserSuccess.type]: () => true,
+  [actions.loginSuccess.type]: () => true,
+  [actions.logoutRequest.type]: () => false,
+});
 
 const isLoading = createReducer(initialState.isLoading, {
   [actions.getCurrentUserRequest.type]: () => true,
@@ -44,7 +57,9 @@ const error = createReducer(initialState.error, {
 });
 
 export default combineReducers({
+  isAppLoading,
   isLoading,
+  isAuthorized,
   user,
   token,
   error,
