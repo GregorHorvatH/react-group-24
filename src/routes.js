@@ -41,6 +41,9 @@ const LoginPage = lazy(() =>
 const LogoutPage = lazy(() =>
   import('./pages/LogoutPage' /* webpackChunkName: "LogoutPage" */),
 );
+const HooksPage = lazy(() =>
+  import('./pages/HooksPage' /* webpackChunkName: "HooksPage" */),
+);
 
 export const routes = [
   {
@@ -153,5 +156,12 @@ export const routes = [
     component: LogoutPage,
     showInMenu: true,
     needsAuthorization: true,
+  },
+  {
+    path: '/hooks',
+    label: 'HooksPage',
+    component: HooksPage,
+    showInMenu: true,
+    needsAuthorization: false,
   },
 ];

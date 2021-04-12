@@ -1,4 +1,4 @@
-const Counter = ({ value = 0, onIncrement, onDecrement, onDelete }) => {
+const CounterContext = ({ value = 0, onIncrement, onDecrement, onDelete }) => {
   return (
     <div className="counter">
       <button onClick={onDecrement}>-</button>
@@ -10,4 +10,4 @@ const Counter = ({ value = 0, onIncrement, onDecrement, onDelete }) => {
   );
 };
 
-export default Counter;
+export default CounterContext;
