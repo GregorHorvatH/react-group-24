@@ -2,27 +2,8 @@
 
 exports[`UserData should not blow up 1`] = `
 <div>
-  <div
-    class="user-data"
-  >
-    <p>
-      FirstName: 
-      Bobbovych
-    </p>
-    <p
-      data-testid="lastname"
-    >
-      LastName: 
-      Bobby
-    </p>
-    <p>
-      Email: 
-      bobby@gmail.com
-    </p>
-    <p>
-      Age: 
-      15
-    </p>
-  </div>
+  <p>
+    Loading...
+  </p>
 </div>
 `;

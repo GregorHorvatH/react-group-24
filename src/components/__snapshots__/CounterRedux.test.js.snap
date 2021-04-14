@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CounterRedux should render 1`] = `
+<div>
+  <div
+    class="counter-redux"
+  >
+    <h4>
+      Counter Redux
+    </h4>
+    <select>
+      <option
+        value="1"
+      >
+        1
+      </option>
+      <option
+        value="5"
+      >
+        5
+      </option>
+      <option
+        value="10"
+      >
+        10
+      </option>
+      <option
+        value="50"
+      >
+        50
+      </option>
+    </select>
+    <button>
+      -
+    </button>
+    <span>
+      1
+    </span>
+    <button>
+      +
+    </button>
+  </div>
+</div>
+`;

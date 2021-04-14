@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Counter Counter should render properly 1`] = `
+<div>
+  <div
+    class="counter"
+  >
+    <button
+      data-testid="decrement"
+    >
+      -
+    </button>
+    <span
+      data-testid="value"
+    >
+      10
+    </span>
+    <button
+      data-testid="increment"
+    >
+      +
+    </button>
+    <button
+      data-testid="delete"
+    >
+      X
+    </button>
+  </div>
+</div>
+`;

@@ -9,8 +9,10 @@ const initialState = {
 };
 
 const value = createReducer(initialState.value, {
-  [actions.incrementAction.type]: (state, action) => state + action.payload,
-  [actions.decrementAction.type]: (state, action) => state - action.payload,
+  [actions.incrementAction.type]: (state, action) =>
+    state + (action.payload || 1),
+  [actions.decrementAction.type]: (state, action) =>
+    state - (action.payload || 1),
 });
 
 const step = createReducer(initialState.step, {
