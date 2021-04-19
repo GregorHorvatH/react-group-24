@@ -4,6 +4,7 @@ import Form from '../components/Form';
 import NewComponent from '../components/NewComponent';
 import TestComponent from '../components/TestComponent';
 import Timer from '../components/TimerHook';
+import Video from '../components/Video';
 
 const TestPage = () => {
   const [showTimer, setShowTimer] = useState(false);
@@ -15,7 +16,7 @@ const TestPage = () => {
   return (
     <Fragment>
       <Header someNumber={x} age={19} />
-
+      {/*
       <NewComponent>
         <h1>Test</h1>
       </NewComponent>
@@ -23,7 +24,9 @@ const TestPage = () => {
       <Form sayHello={sayHello} someComponent={TestComponent} />
 
       <button onClick={toggleShowTimer}>timer</button>
-      {showTimer && <Timer />}
+      {showTimer && <Timer />} */}
+
+      <Video />
     </Fragment>
   );
 };

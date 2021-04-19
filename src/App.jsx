@@ -17,7 +17,8 @@ const contextStyles = {
 
 const App = () => {
   const dispatch = useDispatch();
-  const isAppLoading = useSelector(getIsAppLoadingSelector);
+  // const isAppLoading = useSelector(getIsAppLoadingSelector);
+  const isAppLoading = false;
 
   useEffect(() => {
     dispatch(getCurrenUser());

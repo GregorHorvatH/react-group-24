@@ -99,7 +99,7 @@ export const routes = [
     label: 'Test',
     component: TestPage,
     showInMenu: true,
-    needsAuthorization: true,
+    needsAuthorization: false,
   },
   {
     path: '/props-tests',
